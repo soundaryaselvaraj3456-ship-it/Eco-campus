@@ -216,6 +216,7 @@ No additional installation is required.
 * Academic Project Demonstrations
 
 ---
+## Demo Link : https://soundaryaselvaraj3456-ship-it.github.io/Eco-campus/
 
 ## 👨‍💻 Developed By
 
