@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoCampus AI – Smart Campus Sustainability Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="logo-leaf">🌿</span>
+      <span>EcoCampus <em>AI</em></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#problem">Problem</a></li>
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#chatbot">AI Chat</a></li>
+      <li><a href="#tech">Tech</a></li>
+      <li><a href="#impact">Impact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="sun">☀️</span><span class="moon">🌙</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <canvas id="particleCanvas"></canvas>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse-dot"></span>
+      IBM SkillsBuild × Hackathon 2025
+    </div>
+    <h1 class="hero-title">
+      EcoCampus <span class="gradient-text">AI</span>
+    </h1>
+    <p class="hero-sub">Smart Campus Sustainability Assistant</p>
+    <p class="hero-desc">AI-Powered Resource Monitoring for a Greener and Smarter Campus — harnessing IBM Granite, ML, and IoT to eliminate waste before it happens.</p>
+    <div class="hero-btns">
+      <a href="#dashboard" class="btn btn-primary">
+        <span>Explore Dashboard</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#solution" class="btn btn-ghost">View Solution</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-num" data-target="340">0</span><span>+</span><small>Campuses Monitored</small></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><span class="hstat-num" data-target="42">0</span><span>%</span><small>Avg Energy Saved</small></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><span class="hstat-num" data-target="1200">0</span><span>T</span><small>CO₂ Reduced</small></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="planet-ring">
+      <div class="planet">🌍</div>
+      <div class="orbit orbit-1">
+        <div class="orbit-icon">⚡</div>
+      </div>
+      <div class="orbit orbit-2">
+        <div class="orbit-icon">💧</div>
+      </div>
+      <div class="orbit orbit-3">
+        <div class="orbit-icon">🌱</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── PROBLEM ─────────────────────────────────────────── -->
+<section class="section" id="problem">
+  <div class="container">
+    <div class="section-label">01 — The Challenge</div>
+    <h2 class="section-title">Campus Resource <span class="gradient-text">Wastage</span></h2>
+    <p class="section-desc">Colleges and universities consume enormous amounts of electricity, water, and paper every day. Without intelligent monitoring, this waste silently inflates costs, raises emissions, and undermines sustainability goals.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card reveal" data-delay="0">
+        <div class="problem-icon" style="--ic:#f59e0b">⚡</div>
+        <h3>Electricity Waste</h3>
+        <p>Idle labs, 24/7 HVAC, and unmanaged servers drain power around the clock even when buildings are empty.</p>
+        <div class="problem-stat">~35%<small> of energy wasted</small></div>
+      </div>
+      <div class="problem-card reveal" data-delay="100">
+        <div class="problem-icon" style="--ic:#3b82f6">💧</div>
+        <h3>Water Waste</h3>
+        <p>Leaking pipes, unmonitored irrigation systems, and ageing fixtures waste thousands of litres per day.</p>
+        <div class="problem-stat">~28%<small> lost to leaks</small></div>
+      </div>
+      <div class="problem-card reveal" data-delay="200">
+        <div class="problem-icon" style="--ic:#8b5cf6">📄</div>
+        <h3>Paper Waste</h3>
+        <p>Mass printing of handouts, exam sheets, and notices generates avoidable paper waste and deforestation pressure.</p>
+        <div class="problem-stat">~60%<small> of prints unused</small></div>
+      </div>
+      <div class="problem-card reveal" data-delay="300">
+        <div class="problem-icon" style="--ic:#ef4444">🌫️</div>
+        <h3>Carbon Emissions</h3>
+        <p>Cumulative resource waste from campus operations contributes significantly to annual institutional carbon footprints.</p>
+        <div class="problem-stat">~4.2T<small> CO₂ / campus / yr</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SDG ─────────────────────────────────────────────── -->
+<section class="section section-alt" id="sdg">
+  <div class="container">
+    <div class="section-label">02 — Why It Matters</div>
+    <h2 class="section-title">Aligned with <span class="gradient-text">Global Goals</span></h2>
+    <p class="section-desc">EcoCampus AI directly supports four United Nations Sustainable Development Goals, turning campus operations into a force for planetary good.</p>
+
+    <div class="sdg-grid">
+      <div class="sdg-card reveal" data-sdg="7" data-delay="0">
+        <div class="sdg-badge">SDG 7</div>
+        <div class="sdg-icon">⚡</div>
+        <h3>Affordable & Clean Energy</h3>
+        <p>AI monitoring identifies wasteful consumption patterns and drives adoption of renewable energy alternatives on campus.</p>
+      </div>
+      <div class="sdg-card reveal" data-sdg="11" data-delay="100">
+        <div class="sdg-badge">SDG 11</div>
+        <div class="sdg-icon">🏛️</div>
+        <h3>Sustainable Cities & Communities</h3>
+        <p>Smarter campus infrastructure becomes a living lab for sustainable urban planning and community innovation.</p>
+      </div>
+      <div class="sdg-card reveal" data-sdg="12" data-delay="200">
+        <div class="sdg-badge">SDG 12</div>
+        <div class="sdg-icon">♻️</div>
+        <h3>Responsible Consumption</h3>
+        <p>Real-time usage data nudges students and staff to consume resources responsibly and measure the impact of every change.</p>
+      </div>
+      <div class="sdg-card reveal" data-sdg="13" data-delay="300">
+        <div class="sdg-badge">SDG 13</div>
+        <div class="sdg-icon">🌍</div>
+        <h3>Climate Action</h3>
+        <p>Aggregated across thousands of campuses, EcoCampus AI can meaningfully reduce global higher-education carbon output.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLUTION ────────────────────────────────────────── -->
+<section class="section" id="solution">
+  <div class="container">
+    <div class="section-label">03 — Our Approach</div>
+    <h2 class="section-title">The <span class="gradient-text">Proposed Solution</span></h2>
+    <p class="section-desc">Four tightly integrated AI modules that turn raw sensor data into actionable sustainability intelligence.</p>
+
+    <div class="solution-grid">
+      <div class="sol-card reveal" data-delay="0">
+        <div class="sol-num">01</div>
+        <div class="sol-icon">📡</div>
+        <h3>Real-Time Resource Monitoring</h3>
+        <p>IoT sensors stream live electricity, water, and paper data to a central dashboard. Anomalies surface instantly, giving facilities teams seconds — not hours — to respond.</p>
+      </div>
+      <div class="sol-card reveal" data-delay="100">
+        <div class="sol-num">02</div>
+        <div class="sol-icon">📈</div>
+        <h3>Predictive Consumption Trends</h3>
+        <p>ML models trained on historical campus data forecast next-day and next-week usage, enabling proactive resource planning and budget optimisation.</p>
+      </div>
+      <div class="sol-card reveal" data-delay="200">
+        <div class="sol-num">03</div>
+        <div class="sol-icon">🌿</div>
+        <h3>Carbon Footprint Calculator</h3>
+        <p>Converts raw consumption metrics into CO₂-equivalent scores per building, department, and campus — with trend comparisons against sector benchmarks.</p>
+      </div>
+      <div class="sol-card reveal" data-delay="300">
+        <div class="sol-num">04</div>
+        <div class="sol-icon">🤖</div>
+        <h3>Eco-Friendly AI Suggestions</h3>
+        <p>IBM Granite–powered RAG chatbot delivers contextual, evidence-backed recommendations drawn from sustainability policies, campus data, and global best practices.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORKFLOW ────────────────────────────────────────── -->
+<section class="section section-alt" id="workflow">
+  <div class="container">
+    <div class="section-label">04 — How It Works</div>
+    <h2 class="section-title">System <span class="gradient-text">Workflow</span></h2>
+
+    <div class="workflow-track">
+      <div class="workflow-step reveal" data-delay="0">
+        <div class="ws-icon">🏫</div>
+        <div class="ws-body">
+          <h4>Campus Data Collection</h4>
+          <p>IoT sensors, smart meters, and print queues feed real-time data streams.</p>
+        </div>
+      </div>
+      <div class="workflow-arrow">↓</div>
+      <div class="workflow-step reveal" data-delay="100">
+        <div class="ws-icon">🧠</div>
+        <div class="ws-body">
+          <h4>AI Analysis</h4>
+          <p>IBM Granite AI ingests structured and unstructured campus data for pattern detection.</p>
+        </div>
+      </div>
+      <div class="workflow-arrow">↓</div>
+      <div class="workflow-step reveal" data-delay="200">
+        <div class="ws-icon">🔮</div>
+        <div class="ws-body">
+          <h4>Prediction & Recommendations</h4>
+          <p>ML models forecast usage; RAG retriever surfaces campus-specific eco actions.</p>
+        </div>
+      </div>
+      <div class="workflow-arrow">↓</div>
+      <div class="workflow-step reveal" data-delay="300">
+        <div class="ws-icon">📊</div>
+        <div class="ws-body">
+          <h4>Sustainability Dashboard</h4>
+          <p>Admins, faculty, and students see live scores, charts, and personalised suggestions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ARCHITECTURE ────────────────────────────────────── -->
+<section class="section" id="architecture">
+  <div class="container">
+    <div class="section-label">05 — System Design</div>
+    <h2 class="section-title">System <span class="gradient-text">Architecture</span></h2>
+
+    <div class="arch-grid">
+      <div class="arch-module reveal" data-delay="0">
+        <div class="arch-icon">⚡</div>
+        <h4>Energy Monitoring Module</h4>
+        <ul>
+          <li>Real-time electricity tracking per building</li>
+          <li>Usage forecasting with LSTM models</li>
+          <li>Peak-hour alerts & anomaly flags</li>
+        </ul>
+      </div>
+      <div class="arch-module reveal" data-delay="100">
+        <div class="arch-icon">💧</div>
+        <h4>Water Usage Tracker</h4>
+        <ul>
+          <li>Daily consumption monitoring by zone</li>
+          <li>Leak detection via flow anomalies</li>
+          <li>Smart irrigation scheduling</li>
+        </ul>
+      </div>
+      <div class="arch-module reveal" data-delay="200">
+        <div class="arch-icon">📄</div>
+        <h4>Paper Usage Tracker</h4>
+        <ul>
+          <li>Print count monitoring across labs</li>
+          <li>Digital alternative suggestions</li>
+          <li>Semester usage trend reports</li>
+        </ul>
+      </div>
+      <div class="arch-module reveal" data-delay="300">
+        <div class="arch-icon">🤖</div>
+        <h4>AI Chat & Dashboard</h4>
+        <ul>
+          <li>RAG-powered sustainability chatbot</li>
+          <li>Live sustainability score engine</li>
+          <li>Personalised department insights</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DASHBOARD ───────────────────────────────────────── -->
+<section class="section section-alt" id="dashboard">
+  <div class="container">
+    <div class="section-label">06 — Live Analytics</div>
+    <h2 class="section-title">Sustainability <span class="gradient-text">Dashboard</span></h2>
+
+    <!-- Score + KPIs -->
+    <div class="dash-top">
+      <div class="green-score-card reveal">
+        <div class="gs-label">Green Score</div>
+        <div class="gs-ring">
+          <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" class="ring-bg"/>
+            <circle cx="60" cy="60" r="50" class="ring-fill" id="ringFill"/>
+          </svg>
+          <div class="gs-number" id="gsNumber">0</div>
+        </div>
+        <div class="gs-sub">/ 100</div>
+        <div class="gs-trend">↑ 6 pts from last month</div>
+      </div>
+
+      <div class="kpi-stack">
+        <div class="kpi-card reveal" data-delay="100">
+          <div class="kpi-label">⚡ Electricity Usage</div>
+          <div class="kpi-bar-wrap">
+            <div class="kpi-bar" id="kpiE" style="--pct:0%;--clr:#f59e0b"></div>
+          </div>
+          <div class="kpi-pct">78%</div>
+        </div>
+        <div class="kpi-card reveal" data-delay="200">
+          <div class="kpi-label">💧 Water Usage</div>
+          <div class="kpi-bar-wrap">
+            <div class="kpi-bar" id="kpiW" style="--pct:0%;--clr:#3b82f6"></div>
+          </div>
+          <div class="kpi-pct">62%</div>
+        </div>
+        <div class="kpi-card reveal" data-delay="300">
+          <div class="kpi-label">📄 Paper Usage</div>
+          <div class="kpi-bar-wrap">
+            <div class="kpi-bar" id="kpiP" style="--pct:0%;--clr:#8b5cf6"></div>
+          </div>
+          <div class="kpi-pct">45%</div>
+        </div>
+        <div class="kpi-card reveal carbon-kpi" data-delay="400">
+          <div class="kpi-label">🌫️ Carbon Footprint</div>
+          <div class="carbon-num"><span class="counter" data-target="125">0</span> kg CO₂/mo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts-grid">
+      <div class="chart-card reveal" data-delay="0">
+        <div class="chart-hdr">
+          <h4>Energy Consumption (kWh)</h4>
+          <span class="chart-badge energy">Weekly</span>
+        </div>
+        <canvas id="energyChart" height="200"></canvas>
+      </div>
+      <div class="chart-card reveal" data-delay="100">
+        <div class="chart-hdr">
+          <h4>Water Usage (kL)</h4>
+          <span class="chart-badge water">Weekly</span>
+        </div>
+        <canvas id="waterChart" height="200"></canvas>
+      </div>
+      <div class="chart-card reveal" data-delay="200">
+        <div class="chart-hdr">
+          <h4>Carbon Emissions (kg CO₂)</h4>
+          <span class="chart-badge carbon">Monthly</span>
+        </div>
+        <canvas id="carbonChart" height="200"></canvas>
+      </div>
+      <div class="chart-card reveal" data-delay="300">
+        <div class="chart-hdr">
+          <h4>Department Sustainability Score</h4>
+          <span class="chart-badge dept">All Depts</span>
+        </div>
+        <canvas id="deptChart" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AI CHATBOT ──────────────────────────────────────── -->
+<section class="section" id="chatbot">
+  <div class="container">
+    <div class="section-label">07 — AI Assistant</div>
+    <h2 class="section-title">EcoCampus <span class="gradient-text">AI Chat</span></h2>
+    <p class="section-desc">Ask our IBM Granite–powered RAG assistant anything about campus sustainability. It draws from real campus data, eco policies, and global best practices.</p>
+
+    <div class="chatbot-wrap">
+      <div class="chat-window">
+        <div class="chat-topbar">
+          <div class="chat-avatar">🌿</div>
+          <div>
+            <div class="chat-name">EcoCampus AI</div>
+            <div class="chat-status"><span class="pulse-dot small"></span> Online · IBM Granite</div>
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <!-- Demo messages injected by JS -->
+        </div>
+
+        <div class="chat-input-row">
+          <input type="text" id="chatInput" placeholder="Ask about sustainability…" />
+          <button id="chatSend" class="btn btn-primary small">Send</button>
+        </div>
+      </div>
+
+      <div class="chat-suggestions">
+        <p class="sugg-label">Try asking:</p>
+        <button class="sugg-btn" data-q="How can we reduce electricity usage in classrooms?">⚡ Reduce electricity in classrooms?</button>
+        <button class="sugg-btn" data-q="What are easy ways to save water on campus?">💧 Save water on campus?</button>
+        <button class="sugg-btn" data-q="How can the library reduce paper waste?">📄 Reduce paper in the library?</button>
+        <button class="sugg-btn" data-q="What is our current carbon footprint trend?">🌫️ Current carbon footprint trend?</button>
+        <button class="sugg-btn" data-q="Which department has the best sustainability score?">🏆 Best sustainability score dept?</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IBM ─────────────────────────────────────────────── -->
+<section class="section section-alt" id="ibm">
+  <div class="container">
+    <div class="section-label">08 — AI Backbone</div>
+    <h2 class="section-title">IBM BOB & <span class="gradient-text">Granite AI</span></h2>
+
+    <div class="ibm-grid">
+      <div class="ibm-card reveal" data-delay="0">
+        <div class="ibm-logo">IBM BOB</div>
+        <h3>Business Opportunity Builder</h3>
+        <div class="ibm-list">
+          <div class="ibm-item"><span class="ibm-tick">✓</span> Problem Identification — maps campus pain points to measurable KPIs</div>
+          <div class="ibm-item"><span class="ibm-tick">✓</span> Opportunity Analysis — quantifies ROI from targeted interventions</div>
+          <div class="ibm-item"><span class="ibm-tick">✓</span> Feature Planning — prioritises roadmap by sustainability impact</div>
+        </div>
+      </div>
+
+      <div class="ibm-card reveal" data-delay="150">
+        <div class="ibm-logo granite">IBM Granite AI</div>
+        <h3>Foundation Model Intelligence</h3>
+        <div class="ibm-list">
+          <div class="ibm-item"><span class="ibm-tick">✓</span> Resource Analysis — deep pattern recognition in multi-source data</div>
+          <div class="ibm-item"><span class="ibm-tick">✓</span> Sustainability Recommendations — context-aware, policy-grounded advice</div>
+          <div class="ibm-item"><span class="ibm-tick">✓</span> AI Chatbot Intelligence — RAG-enhanced conversational reasoning</div>
+          <div class="ibm-item"><span class="ibm-tick">✓</span> Explainable AI — transparent reasoning users can trust and audit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AI LOGIC ────────────────────────────────────────── -->
+<section class="section" id="ailogic">
+  <div class="container">
+    <div class="section-label">09 — Intelligence Layer</div>
+    <h2 class="section-title">AI Logic & <span class="gradient-text">Capabilities</span></h2>
+
+    <div class="ai-grid">
+      <div class="ai-cap reveal" data-delay="0">
+        <div class="ai-icon">🔍</div>
+        <h4>Pattern Detection</h4>
+        <p>Identifies abnormal resource spikes, off-hours usage, and seasonal drift using time-series anomaly models.</p>
+      </div>
+      <div class="ai-cap reveal" data-delay="100">
+        <div class="ai-icon">🔮</div>
+        <h4>Prediction Engine</h4>
+        <p>LSTM and gradient-boosted models forecast consumption 7–30 days ahead so procurement teams can act early.</p>
+      </div>
+      <div class="ai-cap reveal" data-delay="200">
+        <div class="ai-icon">💬</div>
+        <h4>Sustainability Chatbot</h4>
+        <p>Conversational AI trained on SDG frameworks, campus data, and eco-engineering best practices for instant guidance.</p>
+      </div>
+      <div class="ai-cap reveal" data-delay="300">
+        <div class="ai-icon">📚</div>
+        <h4>RAG Integration</h4>
+        <p>Retrieval-Augmented Generation connects Granite to campus policy documents, global eco-tips, and live sensor feeds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TECH STACK ──────────────────────────────────────── -->
+<section class="section section-alt" id="tech">
+  <div class="container">
+    <div class="section-label">10 — What Runs It</div>
+    <h2 class="section-title">Technology <span class="gradient-text">Stack</span></h2>
+
+    <div class="tech-grid">
+      <div class="tech-group reveal" data-delay="0">
+        <div class="tech-group-label">Frontend</div>
+        <div class="tech-pills">
+          <span class="pill">HTML5</span>
+          <span class="pill">CSS3</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Chart.js</span>
+        </div>
+      </div>
+      <div class="tech-group reveal" data-delay="100">
+        <div class="tech-group-label">Backend</div>
+        <div class="tech-pills">
+          <span class="pill">Python 3.11</span>
+          <span class="pill">FastAPI</span>
+          <span class="pill">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="tech-group reveal" data-delay="200">
+        <div class="tech-group-label">AI / ML</div>
+        <div class="tech-pills">
+          <span class="pill highlight">IBM Granite AI</span>
+          <span class="pill highlight">RAG Pipeline</span>
+          <span class="pill">LSTM Models</span>
+          <span class="pill">scikit-learn</span>
+        </div>
+      </div>
+      <div class="tech-group reveal" data-delay="300">
+        <div class="tech-group-label">Data & IoT</div>
+        <div class="tech-pills">
+          <span class="pill">IoT Sensors</span>
+          <span class="pill">MQTT</span>
+          <span class="pill">CSV / JSON</span>
+          <span class="pill">Apache Kafka</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IMPACT ──────────────────────────────────────────── -->
+<section class="section" id="impact">
+  <div class="container">
+    <div class="section-label">11 — Real-World Change</div>
+    <h2 class="section-title">Projected <span class="gradient-text">Impact</span></h2>
+
+    <div class="impact-grid">
+      <div class="impact-card reveal" data-delay="0">
+        <div class="impact-icon">💧</div>
+        <div class="impact-num"><span class="counter" data-target="28">0</span>%</div>
+        <div class="impact-label">Water Saved</div>
+        <p>Through leak detection and smart irrigation, campuses save nearly a third of their water consumption.</p>
+      </div>
+      <div class="impact-card reveal" data-delay="100">
+        <div class="impact-icon">⚡</div>
+        <div class="impact-num"><span class="counter" data-target="42">0</span>%</div>
+        <div class="impact-label">Electricity Reduced</div>
+        <p>AI-driven scheduling and anomaly alerts cut electricity waste across labs, offices, and common areas.</p>
+      </div>
+      <div class="impact-card reveal" data-delay="200">
+        <div class="impact-icon">🌱</div>
+        <div class="impact-num"><span class="counter" data-target="55">0</span>%</div>
+        <div class="impact-label">Carbon Emissions Down</div>
+        <p>Combining energy and water savings translates to more than half the campus carbon footprint eliminated.</p>
+      </div>
+      <div class="impact-card reveal" data-delay="300">
+        <div class="impact-icon">📄</div>
+        <div class="impact-num"><span class="counter" data-target="70">0</span>%</div>
+        <div class="impact-label">Paper Waste Cut</div>
+        <p>Nudge-based digital migration and print quotas reduce unnecessary paper consumption dramatically.</p>
+      </div>
+    </div>
+
+    <div class="impact-checklist reveal">
+      <div class="chk-item"><span class="chk">✓</span> Conserve Water Resources</div>
+      <div class="chk-item"><span class="chk">✓</span> Eliminate Electricity Waste</div>
+      <div class="chk-item"><span class="chk">✓</span> Lower Campus Carbon Footprint</div>
+      <div class="chk-item"><span class="chk">✓</span> Drive Sustainability Awareness</div>
+      <div class="chk-item"><span class="chk">✓</span> Support UN SDG Commitments</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROTOTYPE FLOW ──────────────────────────────────── -->
+<section class="section section-alt" id="proto">
+  <div class="container">
+    <div class="section-label">12 — End-to-End View</div>
+    <h2 class="section-title">Prototype <span class="gradient-text">Workflow</span></h2>
+
+    <div class="proto-flow">
+      <div class="pf-node user reveal" data-delay="0">
+        <div class="pf-icon">👩‍🎓</div>
+        <span>Student / Admin</span>
+      </div>
+      <div class="pf-arrow reveal" data-delay="50">↓</div>
+      <div class="pf-node reveal" data-delay="100">
+        <div class="pf-icon">📊</div>
+        <span>EcoCampus AI Dashboard</span>
+      </div>
+      <div class="pf-arrow reveal" data-delay="150">↓</div>
+      <div class="pf-node ai reveal" data-delay="200">
+        <div class="pf-icon">🧠</div>
+        <span>IBM Granite AI + ML Engine</span>
+      </div>
+      <div class="pf-arrow reveal" data-delay="250">↓</div>
+      <div class="pf-row reveal" data-delay="300">
+        <div class="pf-node small">⚡ Electricity Data</div>
+        <div class="pf-node small">💧 Water Data</div>
+        <div class="pf-node small">📄 Paper Data</div>
+      </div>
+      <div class="pf-arrow reveal" data-delay="350">↓</div>
+      <div class="pf-node reveal" data-delay="400">
+        <div class="pf-icon">🔮</div>
+        <span>Prediction & Analysis</span>
+      </div>
+      <div class="pf-arrow reveal" data-delay="450">↓</div>
+      <div class="pf-node reveal" data-delay="500">
+        <div class="pf-icon">💡</div>
+        <span>AI Recommendations</span>
+      </div>
+      <div class="pf-arrow reveal" data-delay="550">↓</div>
+      <div class="pf-node score reveal" data-delay="600">
+        <div class="pf-icon">🌿</div>
+        <span>Green Sustainability Score</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────── -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo large">
+          <span class="logo-leaf">🌿</span>
+          <span>EcoCampus <em>AI</em></span>
+        </div>
+        <p>Smart Campus Sustainability Assistant · Powered by IBM Granite AI · Built for a greener tomorrow.</p>
+        <div class="sdg-commit">
+          <span>SDG 7</span><span>SDG 11</span><span>SDG 12</span><span>SDG 13</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="#problem">Problem</a></li>
+          <li><a href="#solution">Solution</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#chatbot">AI Chat</a></li>
+          <li><a href="#tech">Tech Stack</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h5>Contact</h5>
+        <p>📧 ecocampus@college.edu</p>
+        <p>📍 Campus Innovation Lab, Block A</p>
+        <p>🌐 ecocampus.ai</p>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-btn" aria-label="GitHub">gh</a>
+          <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 EcoCampus AI · Built with 💚 for IBM SkillsBuild Hackathon</span>
+      <span>Committed to SDGs · Planet First</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
